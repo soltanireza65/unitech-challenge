@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./packages/server/Dockerfile
+    command: ["npm", "run", "dev"]
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    volumes:
+      - ./packages:/usr/src/app/packages
+      - /usr/src/app/node_modules
+      - /usr/src/app/packages/server/node_modules
+      - /usr/src/app/packages/types/node_modules
+      - /usr/src/app/packages/tsconfig/node_modules
+    ports:
+      - '8000:8000'
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

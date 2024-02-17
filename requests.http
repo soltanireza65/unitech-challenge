@@ -1,0 +1,44 @@
+### Create category
+
+POST /api/categories HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Host: localhost:8000
+Content-Length: 107
+
+{
+  "latitude": 1234,
+  "longitude": 1234,
+  "category": "test",
+  "counter": 1
+}
+
+### Get categories
+
+GET /api/categories HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Host: localhost:8000
+Content-Length: 107
+
+### Get category
+
+GET /api/categories/1 HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Host: localhost:8000
+Content-Length: 107
+
+### Update category | increment counter
+
+PATCH /api/categories/1/count/increment HTTP/1.1
+Accept: */*
+Host: localhost:8000
+Content-Length: 107
+
+### Update category | decrement counter
+
+PATCH /api/categories/1/count/decrement HTTP/1.1
+Accept: */*
+Host: localhost:8000
+Content-Length: 107
