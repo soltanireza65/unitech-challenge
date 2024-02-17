@@ -1,3 +1,36 @@
+
+# ============================ 
+# Auth
+# ============================
+
+### Sign up
+
+POST /api/auth/signup HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Host: localhost:8000
+Content-Length: 107
+
+{
+  "email": "m@mdssssss.com",
+  "username": "u_name",
+  "firstName": "f_name",
+  "lastName": "l_name",
+  "password": "123456"
+}
+### Verify user
+
+POST /api/auth/verify/9/0ef26d69-b361-482e-b1c1-ce508f0d8aac HTTP/1.1
+Accept: */*
+Host: localhost:8000
+Content-Length: 107
+
+
+# ============================ 
+# Categories
+# ============================
+
+
 ### Create category
 
 POST /api/categories HTTP/1.1

@@ -17,3 +17,26 @@ model Category {
   category  String?
   counter   Int?
 }
+
+model User {
+  id                Int       @id @default(autoincrement())
+  email             String    @unique
+  username          String
+  firstName         String
+  lastName          String
+  password          String
+  salt              String
+  verificationCode  String?   @default(uuid())
+  verified          Boolean   @default(false)
+  passwordResetCode String?
+  session           Session[]
+
+  @@index(fields: [id, email])
+}
+
+model Session {
+  id     Int     @id @default(autoincrement())
+  userId Int
+  user   User    @relation(fields: [userId], references: [id])
+  valid  Boolean @default(true)
+}
